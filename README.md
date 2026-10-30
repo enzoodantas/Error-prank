@@ -8,6 +8,14 @@ Este projeto é um fork do [Computur Prank Pack, criado por FW-DOOM](https://git
 
 Eu, [Enzo Dantas (@enzoodantas)](https://github.com/enzoodantas), reescrevi a interface principal em tecnologias web para facilitar o uso em diferentes sistemas operacionais e tornar os textos mais acessíveis ao público brasileiro. Esta edição usa JavaScript, HTML e CSS, sem precisar instalar Python ou compilar um executável.
 
+## Arquivo para compartilhar
+
+Envie **`pegadinha.html`**. Ao baixar e abrir esse arquivo no navegador, a chuva de erros começa automaticamente, sem escolher um efeito. Tudo está embutido no HTML. Apenas baixar não executa a simulação; é preciso abrir o arquivo. Prévias de anexos podem bloquear JavaScript.
+
+Digite **4308** para encerrar; em telas de toque, use o botão **Código**. O efeito acontece dentro da aba, que pode ser fechada normalmente.
+
+`index.html` continua sendo o catálogo para testar e escolher os cinco efeitos. `node bundle.cjs` atualiza os dois arquivos HTML.
+
 ## Como usar
 
 1. Clique em **Code → Download ZIP** e extraia a pasta.

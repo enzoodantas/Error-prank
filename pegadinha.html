@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Error Prank — brincadeiras visuais</title><style id="bundled-css">:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0c101b;color:#edf0fa}*{box-sizing:border-box}body{margin:0}main{max-width:1000px;margin:auto;padding:64px 24px}h1{font-size:clamp(2.5rem,7vw,5rem);line-height:1.08;letter-spacing:-.05em}h1 span{color:#9eaaf2}.eyebrow{color:#aebaff;letter-spacing:.15em;font-size:.75rem}p{line-height:1.6;color:#bbc4db}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:36px 0}button{font:inherit;cursor:pointer;color:inherit;border:1px solid #434e6a;border-radius:12px;background:#192238;padding:20px;text-align:left}button:hover{background:#273453}button:focus-visible,a:focus-visible{outline:3px solid #b7c3ff;outline-offset:4px}.cards strong,.cards span{display:block}.cards strong{font-size:1.2rem;margin-bottom:10px}.cards span{color:#bbc4db}.hint,footer{font-size:.9rem}footer{margin-top:48px;color:#9daac4}a{color:#aebaff}[hidden]{display:none!important}#stage{position:fixed;inset:0;background:#080b12;overflow:hidden}#effect{position:absolute;inset:0;overflow:hidden}.error{position:absolute;width:min(310px,85vw);background:#f1f1f1;color:#172035;border:1px solid #7a8190;border-radius:7px;box-shadow:0 8px 32px #0008;overflow:hidden}.error header{padding:9px 14px;background:#173d86;color:white;font-size:.85rem}.error p{color:#172035;padding:16px;margin:0;font-size:.95rem}.center{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px}.center h2{font-size:clamp(1.8rem,6vw,4rem)}.center p{max-width:600px}.virus{background:#220c15;color:#ff8fa1}.update{background:#123e91}.update p{color:white}.spinner{width:48px;height:48px;border:4px solid #ffffff40;border-top-color:white;border-radius:50%;animation:spin 1.4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}#code-toggle{position:absolute;bottom:16px;right:16px;padding:10px 16px;z-index:3}#keypad{position:absolute;right:16px;bottom:75px;width:235px;padding:16px;background:#111a2e;border:1px solid #53617c;border-radius:12px;z-index:4}#digits{display:block;min-height:32px;text-align:center}#keys{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}#keys button{text-align:center;padding:12px}.cracks{width:100%;height:100%;background:radial-gradient(ellipse at 35% 40%,#465063,#07090e 65%)}.cursor{position:absolute;font-size:60px;color:white;text-shadow:2px 2px black;pointer-events:none}@media(prefers-reduced-motion:reduce){.spinner{animation:none}}@media(max-width:500px){main{padding:32px 18px}}
+</style></head>
+<body>
+<main id="menu" hidden>
+<p class="eyebrow">ERROR PRANK · EDIÇÃO BRASILEIRA</p>
+<h1>Deu ruim.<br><span>Mas é só brincadeira.</span></h1>
+<p>Efeitos visuais para abrir no navegador do computador, tablet ou celular.</p>
+<div class="cards">
+<button data-mode="storm"><strong>Chuva de erros</strong><span>Uma tempestade de avisos na tela.</span></button>
+<button data-mode="virus"><strong>Alerta de vírus</strong><span>Uma verificação de mentirinha.</span></button>
+<button data-mode="update"><strong>Atualização infinita</strong><span>Aquela espera que parece não acabar.</span></button>
+<button data-mode="broken"><strong>Tela quebrada</strong><span>Rachaduras virtuais no seu display.</span></button>
+<button data-mode="mouse"><strong>Cursor maluco</strong><span>Um cursor de mentira passeia pela tela.</span></button>
+</div>
+<p class="hint">Para encerrar, digite <b>4308</b>. No celular, toque em “Código” para abrir o teclado. Você também pode fechar a aba normalmente.</p>
+<footer>Ideia original: <a href="https://github.com/FW-DOOM/computur">FW-DOOM / Computur</a>. Adaptação web em português: <a href="https://github.com/enzoodantas/Error-prank">Enzo Dantas</a>.</footer>
+</main>
+<section id="stage" hidden aria-label="Simulação visual"><div id="effect"></div><button id="code-toggle" aria-expanded="false">Código</button><div id="keypad" hidden aria-label="Teclado do código"><output id="digits" aria-live="polite">Digite o código</output><div id="keys"></div></div></section>
+<script id="bundled-js">'use strict';
+const menu = document.querySelector('#menu');
+const stage = document.querySelector('#stage');
+const effect = document.querySelector('#effect');
+const keypad = document.querySelector('#keypad');
+const toggle = document.querySelector('#code-toggle');
+const digits = document.querySelector('#digits');
+let buffer = '', timer = null, trigger = null;
+function stop() {
+  clearInterval(timer); timer = null; effect.replaceChildren();
+  stage.hidden = true; menu.hidden = false; keypad.hidden = true;
+  toggle.setAttribute('aria-expanded', 'false'); buffer = '';
+  digits.textContent = 'Digite o código'; trigger?.focus();
+}
+function input(value) {
+  if (stage.hidden) return;
+  buffer = value === 'Limpar' ? '' : (buffer + value).slice(-4);
+  digits.textContent = buffer ? '●'.repeat(buffer.length) : 'Digite o código';
+  if (buffer === '4308') stop();
+}
+for (const value of ['1','2','3','4','5','6','7','8','9','Limpar','0']) {
+  const key = document.createElement('button'); key.textContent = value;
+  key.addEventListener('click', () => input(value)); document.querySelector('#keys').append(key);
+}
+document.addEventListener('keydown', event => {
+  if (!event.ctrlKey && !event.metaKey && !event.altKey && /^\d$/.test(event.key)) input(event.key);
+});
+toggle.addEventListener('click', () => {
+  keypad.hidden = !keypad.hidden; toggle.setAttribute('aria-expanded', String(!keypad.hidden));
+});
+function panel(title, text, theme = '') {
+  const box = document.createElement('div'); box.className = `center ${theme}`;
+  const heading = document.createElement('h2'); heading.textContent = title;
+  const description = document.createElement('p'); description.textContent = text;
+  box.append(heading, description); effect.append(box); return box;
+}
+function storm() {
+  const messages = ['Erro 404: a tranquilidade não foi encontrada.', 'O sistema encontrou um problema inesperado.', 'Falha na operação. Tente respirar fundo.', 'Muitos erros ao mesmo tempo. Aguarde...', 'Seu café parou de responder.'];
+  const box = document.createElement('article'); box.className = 'error';
+  const title = document.createElement('header'); title.textContent = 'Aviso do sistema';
+  const message = document.createElement('p'); message.textContent = messages[Math.floor(Math.random()*messages.length)];
+  box.append(title, message); effect.append(box);
+  box.style.left = `${Math.random()*Math.max(0,effect.clientWidth-box.offsetWidth)}px`;
+  box.style.top = `${Math.random()*Math.max(0,effect.clientHeight-box.offsetHeight-70)}px`;
+  if (effect.children.length > 24) effect.firstElementChild.remove();
+}
+function start(mode, button) {
+  stop(); trigger = button; menu.hidden = true; stage.hidden = false; toggle.focus();
+  if (mode === 'storm') { storm(); timer = setInterval(storm, 650); }
+  if (mode === 'virus') {
+    const box = panel('Ameaças detectadas!', 'Verificação em andamento…', 'virus');
+    let count = 0; timer = setInterval(() => {
+      count = Math.min(count + 7, 99); box.querySelector('p').textContent = `Verificando o sistema: ${count}% · ${count * 3} alertas encontrados`;
+      if (count === 99) clearInterval(timer);
+    }, 900);
+  }
+  if (mode === 'update') {
+    const box = panel('Preparando atualizações', '99% concluído. Isso pode levar um tempinho.', 'update');
+    const spinner = document.createElement('div'); spinner.className = 'spinner'; box.prepend(spinner);
+  }
+  if (mode === 'broken') {
+    const ns = 'http://www.w3.org/2000/svg'; const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox','0 0 1000 1000'); svg.setAttribute('preserveAspectRatio','none'); svg.classList.add('cracks');
+    for (let i=0; i<22; i++) {
+      const angle = i*Math.PI/11; const line = document.createElementNS(ns,'polyline');
+      line.setAttribute('points',`350,400 ${350+Math.cos(angle)*180},${400+Math.sin(angle)*150} ${350+Math.cos(angle+.12)*1200},${400+Math.sin(angle+.12)*1200}`);
+      line.setAttribute('stroke',i%2?'#b7c1cf':'#596780'); line.setAttribute('fill','none'); line.setAttribute('stroke-width',i%3+1); svg.append(line);
+    } effect.append(svg);
+  }
+  if (mode === 'mouse') {
+    panel('Ué… cadê o cursor?', 'Parece que ele resolveu passear.');
+    const cursor = document.createElement('span'); cursor.className = 'cursor'; cursor.textContent = '➤'; effect.append(cursor);
+    timer = setInterval(() => { cursor.style.left = `${Math.random()*Math.max(0,effect.clientWidth-70)}px`; cursor.style.top = `${Math.random()*Math.max(0,effect.clientHeight-120)}px`; }, 700);
+  }
+}
+document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => start(button.dataset.mode, button)));
+</script><script>start("storm", document.querySelector('[data-mode="storm"]'));</script></body></html>

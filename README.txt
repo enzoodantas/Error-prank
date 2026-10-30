@@ -4,3 +4,5 @@ Para encerrar: digite 4308. No celular, toque em Código e use o teclado da pág
 Leia README.md para instruções, compatibilidade e créditos.
 Original: FW-DOOM — https://github.com/FW-DOOM/computur
 Adaptação web em português: Enzo Dantas — https://github.com/enzoodantas/Error-prank
+
+Para início automático, envie e abra pegadinha.html no navegador. Código de saída: 4308.
