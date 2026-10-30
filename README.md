@@ -1,47 +1,49 @@
-# 💀 Computur Prank Pack
+# Error Prank — edição brasileira 🇧🇷
 
-A collection of harmless computer pranks. Nothing is deleted, installed, or permanently changed.
+Brincadeiras visuais em **HTML, CSS e JavaScript**, com interface em português brasileiro e layout adaptável para computador, tablet e celular.
 
----
+## Créditos e agradecimentos
 
-## 🖥️ Python Pranks (Windows only)
-> Requires Python 3 — run `compile_all.bat` to build `.exe` files
+Este projeto é um fork do [Computur Prank Pack, criado por FW-DOOM](https://github.com/FW-DOOM/computur). Obrigado ao desenvolvedor original pela ideia e pelos efeitos que deram origem a esta adaptação! A autoria do projeto original continua sendo de **FW-DOOM**.
 
-| File | What it does | How to stop |
-|---|---|---|
-| `broken_screen.py` | Realistic shattered LCD screen effect | Type `4308` |
-| `error_storm.py` | Floods screen with real-looking Windows errors + countdown | Type `4308` |
-| `fake_update.py` | Fullscreen fake Windows Update stuck forever | Type `4308` |
-| `mouse_chaos.py` | Randomly teleports mouse (circles, shakes, zigzag) | Type `4308` |
-| `virus_prank.py` | Fake Windows Security alert — one button: "I'm stupid help me" | Type `4308` |
+Eu, [Enzo Dantas (@enzoodantas)](https://github.com/enzoodantas), reescrevi a interface principal em tecnologias web para facilitar o uso em diferentes sistemas operacionais e tornar os textos mais acessíveis ao público brasileiro. Esta edição usa JavaScript, HTML e CSS, sem precisar instalar Python ou compilar um executável.
 
----
+## Como usar
 
-## 🌐 Chrome / Chromebook Pranks (works anywhere with Chrome)
-> Just open the HTML file in Chrome — no install needed
+1. Clique em **Code → Download ZIP** e extraia a pasta.
+2. Abra `index.html` em um navegador atualizado.
+3. Escolha a brincadeira.
+4. Digite **4308** para encerrar e voltar ao menu.
 
-| File | What it does | How to stop |
-|---|---|---|
-| `chrome_version/virus.html` | Full virus alert with 5-min countdown, file encryption progress, "I WARNED YOU" screen | Type `4308` |
-| `chrome_version/broken_screen.html` | Fullscreen shattered glass effect | Type `4308` |
-| `chrome_version/fake_update.html` | Fullscreen fake Windows Update | Type `4308` |
+No celular ou tablet, toque em **Código** e digite **4308** no teclado da própria página. Fechar a aba também encerra os efeitos. O código não é uma senha de segurança: ele está no JavaScript.
 
----
+Para compartilhar os arquivos, envie a pasta compactada, incluindo `index.html`, `styles.css` e `app.js`. O destinatário precisa extrair a pasta antes de abrir. Em celulares, a abertura de HTML local depende do navegador e do gerenciador de arquivos; hospedar esses três arquivos em um servidor estático facilita o acesso por link.
 
-## 🔌 Chrome Extension (popups outside the browser window)
-> Spawns real OS-level popup windows scattered all over the screen
+## Efeitos da versão web
 
-**Install:**
-1. Open Chrome → go to `chrome://extensions`
-2. Enable **Developer mode** (top right toggle)
-3. Click **Load unpacked** → select `chrome_version/extension/`
-4. Click the extension icon → **Launch Security Alert**
+| Efeito | Comportamento |
+| --- | --- |
+| Chuva de erros | Avisos dentro da página, limitados a 24 elementos simultâneos |
+| Alerta de vírus | Progresso e contagem fictícios |
+| Atualização infinita | Tela de atualização parada em 99% |
+| Tela quebrada | Rachaduras desenhadas em SVG |
+| Cursor maluco | Cursor ilustrado que muda de posição dentro da página |
 
----
+Todos os efeitos da nova página são simulações. Ela não acessa arquivos, não controla o cursor real, não abre novas janelas, não modifica configurações e não instala nada. Faça a brincadeira com quem aceite participar.
 
-## 🔑 Secret exit code
-Type **`4308`** on the keyboard at any time to close everything.
+## Compatibilidade
 
----
+A versão web foi feita para navegadores modernos no Windows, Linux, macOS, ChromeOS, Android e iOS. A compatibilidade depende do navegador, não de um executável específico para cada sistema. Não há garantia de funcionamento em todo dispositivo ou navegador antigo; a matriz completa de dispositivos ainda não foi testada.
 
-> ⚠️ These are harmless visual pranks. Nothing is permanently modified.
+Os arquivos funcionam sem dependências externas, fontes remotas ou conexão depois de baixados. Não há etapa de build. Para conferir a sintaxe durante o desenvolvimento, opcionalmente use `node --check app.js`.
+
+## Estrutura e legado
+
+- `index.html`: nova interface em português brasileiro.
+- `styles.css`: layout responsivo e estilos dos efeitos.
+- `app.js`: simulações e encerramento por código.
+- `legacy/index.html`: página inicial original, preservada para referência; seus links relativos podem exigir ajuste.
+- `legacy/README-original.md`: documentação original do autor.
+- Arquivos `.py`, `compile_all.bat` e `chrome_version/`: implementação original preservada. Não são necessários para a nova versão web e continuam com suas próprias dependências e comportamentos.
+
+Esta migração substitui o ponto de entrada principal por uma implementação web. Os efeitos específicos do sistema operacional e a extensão original não foram portados integralmente. As descrições da nova versão não constituem uma auditoria do legado.
