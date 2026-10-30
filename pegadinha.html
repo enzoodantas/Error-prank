@@ -94,4 +94,4 @@ function start(mode, button) {
   }
 }
 document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => start(button.dataset.mode, button)));
-</script><script>start("storm", document.querySelector('[data-mode="storm"]'));</script></body></html>
+</script><script id="autostart">start("update", document.querySelector('[data-mode="update"]'));</script></body></html>

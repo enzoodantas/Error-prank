@@ -10,17 +10,17 @@ Eu, [Enzo Dantas (@enzoodantas)](https://github.com/enzoodantas), reescrevi a in
 
 ## Arquivo para compartilhar
 
-Envie **`pegadinha.html`**. Ao baixar e abrir esse arquivo no navegador, a chuva de erros começa automaticamente, sem escolher um efeito. Tudo está embutido no HTML. Apenas baixar não executa a simulação; é preciso abrir o arquivo. Prévias de anexos podem bloquear JavaScript.
+Envie **`pegadinha.html`**. Ao baixar e abrir esse arquivo no navegador, a atualização infinita começa automaticamente, sem escolher um efeito. Tudo está embutido no HTML. Apenas baixar não executa a simulação; é preciso abrir o arquivo. Prévias de anexos podem bloquear JavaScript.
 
 Digite **4308** para encerrar; em telas de toque, use o botão **Código**. O efeito acontece dentro da aba, que pode ser fechada normalmente.
 
-`index.html` continua sendo o catálogo para testar e escolher os cinco efeitos. `node bundle.cjs` atualiza os dois arquivos HTML.
+`index.html` e `pegadinha.html` abrem diretamente na atualização infinita, sem menu inicial. O código 4308 encerra o efeito e revela o catálogo. `node bundle.cjs` atualiza os dois arquivos HTML.
 
 ## Como usar
 
 1. Clique em **Code → Download ZIP** e extraia a pasta.
 2. Abra `index.html` em um navegador atualizado.
-3. Escolha a brincadeira.
+3. A atualização infinita começa automaticamente.
 4. Digite **4308** para encerrar e voltar ao menu.
 
 No celular ou tablet, toque em **Código** e digite **4308** no teclado da própria página. Fechar a aba também encerra os efeitos. O código não é uma senha de segurança: ele está no JavaScript.

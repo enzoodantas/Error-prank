@@ -5,4 +5,4 @@ Leia README.md para instruções, compatibilidade e créditos.
 Original: FW-DOOM — https://github.com/FW-DOOM/computur
 Adaptação web em português: Enzo Dantas — https://github.com/enzoodantas/Error-prank
 
-Para início automático, envie e abra pegadinha.html no navegador. Código de saída: 4308.
+Abra index.html ou envie pegadinha.html: ambos iniciam na atualização infinita, sem menu. Código de saída: 4308.
