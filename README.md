@@ -17,7 +17,7 @@ Eu, [Enzo Dantas (@enzoodantas)](https://github.com/enzoodantas), reescrevi a in
 
 No celular ou tablet, toque em **Código** e digite **4308** no teclado da própria página. Fechar a aba também encerra os efeitos. O código não é uma senha de segurança: ele está no JavaScript.
 
-Para compartilhar os arquivos, envie a pasta compactada, incluindo `index.html`, `styles.css` e `app.js`. O destinatário precisa extrair a pasta antes de abrir. Em celulares, a abertura de HTML local depende do navegador e do gerenciador de arquivos; hospedar esses três arquivos em um servidor estático facilita o acesso por link.
+Para compartilhar, envie apenas `index.html`: ele já inclui os estilos e o JavaScript. O destinatário deve baixar e abrir o arquivo em um navegador, não no visualizador de anexos do aplicativo de mensagens. Em celulares, a abertura de HTML local depende do navegador e do gerenciador de arquivos; hospedar o `index.html` em um servidor estático facilita o acesso por link.
 
 ## Efeitos da versão web
 
@@ -35,7 +35,7 @@ Todos os efeitos da nova página são simulações. Ela não acessa arquivos, n�
 
 A versão web foi feita para navegadores modernos no Windows, Linux, macOS, ChromeOS, Android e iOS. A compatibilidade depende do navegador, não de um executável específico para cada sistema. Não há garantia de funcionamento em todo dispositivo ou navegador antigo; a matriz completa de dispositivos ainda não foi testada.
 
-Os arquivos funcionam sem dependências externas, fontes remotas ou conexão depois de baixados. Não há etapa de build. Para conferir a sintaxe durante o desenvolvimento, opcionalmente use `node --check app.js`.
+Os arquivos funcionam sem dependências externas, fontes remotas ou conexão depois de baixados. O HTML distribuído já está pronto. Ao editar `styles.css` ou `app.js`, execute `node bundle.cjs` para atualizar o conteúdo embutido no `index.html`. Node.js é necessário apenas para essa manutenção, nunca para quem abre a brincadeira. Para conferir a sintaxe durante o desenvolvimento, opcionalmente use `node --check app.js`.
 
 ## Estrutura e legado
 
